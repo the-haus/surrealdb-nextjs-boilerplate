@@ -1,0 +1,20 @@
+query queryTodoOperation {
+    queryTodo {
+        ...TodoFields
+    }
+}
+
+mutation createTodoOperation($title: String!, $description: String!) {
+    createTodo(title: $title, description: $description) {
+        ...TodoFields
+    }
+}
+mutation removeTodoOperation($id: ID!) {
+    removeTodo(id: $id)
+}
+
+fragment TodoFields on Todo {
+    id
+    title
+    description
+}
