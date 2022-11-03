@@ -1,85 +1,8 @@
+import * as Types from "./schema.d";
+
 import { gql } from "@apollo/client";
 import * as Apollo from "@apollo/client";
-export type Maybe<T> = T | null;
-export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 const defaultOptions = {} as const;
-/** All built-in and custom scalars, mapped to their actual values */
-export type Scalars = {
-    ID: string;
-    String: string;
-    Boolean: boolean;
-    Int: number;
-    Float: number;
-    JSON: any;
-    JSONObject: any;
-};
-
-export type Mutation = {
-    __typename?: "Mutation";
-    createTodo?: Maybe<Todo>;
-    removeTodo?: Maybe<Scalars["Boolean"]>;
-};
-
-export type MutationCreateTodoArgs = {
-    description: Scalars["String"];
-    title: Scalars["String"];
-};
-
-export type MutationRemoveTodoArgs = {
-    id: Scalars["ID"];
-};
-
-export type Query = {
-    __typename?: "Query";
-    queryTodo?: Maybe<Array<Maybe<Todo>>>;
-    welcome: Scalars["String"];
-};
-
-export type Todo = {
-    __typename?: "Todo";
-    description?: Maybe<Scalars["String"]>;
-    id: Scalars["ID"];
-    title?: Maybe<Scalars["String"]>;
-};
-
-export type QueryTodoOperationQueryVariables = Exact<{ [key: string]: never }>;
-
-export type QueryTodoOperationQuery = {
-    __typename?: "Query";
-    queryTodo?: Array<{
-        __typename?: "Todo";
-        id: string;
-        title?: string | null;
-        description?: string | null;
-    } | null> | null;
-};
-
-export type CreateTodoOperationMutationVariables = Exact<{
-    title: Scalars["String"];
-    description: Scalars["String"];
-}>;
-
-export type CreateTodoOperationMutation = {
-    __typename?: "Mutation";
-    createTodo?: { __typename?: "Todo"; id: string; title?: string | null; description?: string | null } | null;
-};
-
-export type RemoveTodoOperationMutationVariables = Exact<{
-    id: Scalars["ID"];
-}>;
-
-export type RemoveTodoOperationMutation = { __typename?: "Mutation"; removeTodo?: boolean | null };
-
-export type TodoFieldsFragment = {
-    __typename?: "Todo";
-    id: string;
-    title?: string | null;
-    description?: string | null;
-};
-
 export const TodoFieldsFragmentDoc = gql`
     fragment TodoFields on Todo {
         id
@@ -112,19 +35,19 @@ export const QueryTodoOperationDocument = gql`
  * });
  */
 export function useQueryTodoOperationQuery(
-    baseOptions?: Apollo.QueryHookOptions<QueryTodoOperationQuery, QueryTodoOperationQueryVariables>
+    baseOptions?: Apollo.QueryHookOptions<Types.QueryTodoOperationQuery, Types.QueryTodoOperationQueryVariables>
 ) {
     const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useQuery<QueryTodoOperationQuery, QueryTodoOperationQueryVariables>(
+    return Apollo.useQuery<Types.QueryTodoOperationQuery, Types.QueryTodoOperationQueryVariables>(
         QueryTodoOperationDocument,
         options
     );
 }
 export function useQueryTodoOperationLazyQuery(
-    baseOptions?: Apollo.LazyQueryHookOptions<QueryTodoOperationQuery, QueryTodoOperationQueryVariables>
+    baseOptions?: Apollo.LazyQueryHookOptions<Types.QueryTodoOperationQuery, Types.QueryTodoOperationQueryVariables>
 ) {
     const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useLazyQuery<QueryTodoOperationQuery, QueryTodoOperationQueryVariables>(
+    return Apollo.useLazyQuery<Types.QueryTodoOperationQuery, Types.QueryTodoOperationQueryVariables>(
         QueryTodoOperationDocument,
         options
     );
@@ -132,8 +55,8 @@ export function useQueryTodoOperationLazyQuery(
 export type QueryTodoOperationQueryHookResult = ReturnType<typeof useQueryTodoOperationQuery>;
 export type QueryTodoOperationLazyQueryHookResult = ReturnType<typeof useQueryTodoOperationLazyQuery>;
 export type QueryTodoOperationQueryResult = Apollo.QueryResult<
-    QueryTodoOperationQuery,
-    QueryTodoOperationQueryVariables
+    Types.QueryTodoOperationQuery,
+    Types.QueryTodoOperationQueryVariables
 >;
 export const CreateTodoOperationDocument = gql`
     mutation createTodoOperation($title: String!, $description: String!) {
@@ -144,8 +67,8 @@ export const CreateTodoOperationDocument = gql`
     ${TodoFieldsFragmentDoc}
 `;
 export type CreateTodoOperationMutationFn = Apollo.MutationFunction<
-    CreateTodoOperationMutation,
-    CreateTodoOperationMutationVariables
+    Types.CreateTodoOperationMutation,
+    Types.CreateTodoOperationMutationVariables
 >;
 
 /**
@@ -167,19 +90,22 @@ export type CreateTodoOperationMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useCreateTodoOperationMutation(
-    baseOptions?: Apollo.MutationHookOptions<CreateTodoOperationMutation, CreateTodoOperationMutationVariables>
+    baseOptions?: Apollo.MutationHookOptions<
+        Types.CreateTodoOperationMutation,
+        Types.CreateTodoOperationMutationVariables
+    >
 ) {
     const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useMutation<CreateTodoOperationMutation, CreateTodoOperationMutationVariables>(
+    return Apollo.useMutation<Types.CreateTodoOperationMutation, Types.CreateTodoOperationMutationVariables>(
         CreateTodoOperationDocument,
         options
     );
 }
 export type CreateTodoOperationMutationHookResult = ReturnType<typeof useCreateTodoOperationMutation>;
-export type CreateTodoOperationMutationResult = Apollo.MutationResult<CreateTodoOperationMutation>;
+export type CreateTodoOperationMutationResult = Apollo.MutationResult<Types.CreateTodoOperationMutation>;
 export type CreateTodoOperationMutationOptions = Apollo.BaseMutationOptions<
-    CreateTodoOperationMutation,
-    CreateTodoOperationMutationVariables
+    Types.CreateTodoOperationMutation,
+    Types.CreateTodoOperationMutationVariables
 >;
 export const RemoveTodoOperationDocument = gql`
     mutation removeTodoOperation($id: ID!) {
@@ -187,8 +113,8 @@ export const RemoveTodoOperationDocument = gql`
     }
 `;
 export type RemoveTodoOperationMutationFn = Apollo.MutationFunction<
-    RemoveTodoOperationMutation,
-    RemoveTodoOperationMutationVariables
+    Types.RemoveTodoOperationMutation,
+    Types.RemoveTodoOperationMutationVariables
 >;
 
 /**
@@ -209,17 +135,20 @@ export type RemoveTodoOperationMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useRemoveTodoOperationMutation(
-    baseOptions?: Apollo.MutationHookOptions<RemoveTodoOperationMutation, RemoveTodoOperationMutationVariables>
+    baseOptions?: Apollo.MutationHookOptions<
+        Types.RemoveTodoOperationMutation,
+        Types.RemoveTodoOperationMutationVariables
+    >
 ) {
     const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useMutation<RemoveTodoOperationMutation, RemoveTodoOperationMutationVariables>(
+    return Apollo.useMutation<Types.RemoveTodoOperationMutation, Types.RemoveTodoOperationMutationVariables>(
         RemoveTodoOperationDocument,
         options
     );
 }
 export type RemoveTodoOperationMutationHookResult = ReturnType<typeof useRemoveTodoOperationMutation>;
-export type RemoveTodoOperationMutationResult = Apollo.MutationResult<RemoveTodoOperationMutation>;
+export type RemoveTodoOperationMutationResult = Apollo.MutationResult<Types.RemoveTodoOperationMutation>;
 export type RemoveTodoOperationMutationOptions = Apollo.BaseMutationOptions<
-    RemoveTodoOperationMutation,
-    RemoveTodoOperationMutationVariables
+    Types.RemoveTodoOperationMutation,
+    Types.RemoveTodoOperationMutationVariables
 >;

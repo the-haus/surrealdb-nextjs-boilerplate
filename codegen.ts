@@ -12,11 +12,14 @@ const config: CodegenConfig = {
             plugins: ["typescript", "typescript-operations"]
         },
         "./src/types/fragments.tsx": {
-            plugins: ["typescript", "typescript-operations", "typescript-react-apollo"],
+            preset: "import-types",
+            plugins: ["typescript-react-apollo"],
+            presetConfig: {
+                typesPath: "./schema.d"
+            },
             config: {
                 withHOC: false,
-                withHooks: true,
-                hooksImportFrom: "react-apollo"
+                withHooks: true
             }
         }
     }
