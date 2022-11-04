@@ -85,7 +85,6 @@ const config: CodegenConfig = {
     }
 };
 export default config; 
-export default config;
 ```
 
 #### Generated Type and Query Operations
@@ -115,7 +114,8 @@ fragment TodoFields on Todo {
 ### Clean Operations
 ```js  
 const [push] = useNotification();    
-const { data } = useQueryTodoOperationQuery(); const [createTodoMutation] = useCreateTodoOperationMutation();
+const { data } = useQueryTodoOperationQuery();
+const [createTodoMutation] = useCreateTodoOperationMutation();
 const [removeTodoMutation] = useRemoveTodoOperationMutation();    
 const onSubmit = async (data: CreateTodoOperationMutationVariables) => {    
     try {    
