@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate": "graphql-codegen -r dotenv/config && npx eslint --fix src/types/*.*",
+    "generate": "graphql-codegen -r dotenv/config",
     "prestart": "yarn generate",
     "predev": "yarn generate"
   },
