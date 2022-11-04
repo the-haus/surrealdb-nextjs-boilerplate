@@ -1,16 +1,15 @@
 import { Panel, Stack, Button } from "rsuite";
-import TodoTable from "../../tabels/TodoTable";
+import TodoTable from "components/tabels/TodoTable";
 import {
-    CreateTodoOperationMutationVariables,
-    RemoveTodoOperationMutationVariables,
-    QueryTodoOperationDocument,
     useCreateTodoOperationMutation,
     useRemoveTodoOperationMutation,
-    useQueryTodoOperationQuery
-} from "types/fragments";
+    useQueryTodoOperationQuery,
+    QueryTodoOperationDocument
+} from "hooks/fragments";
 import React, { useState } from "react";
-import useNotification from "../../../hooks/useNotification";
+import useNotification from "hooks/useNotification";
 import TodoModal from "components/modals/TodoModal";
+import { CreateTodoOperationMutationVariables, RemoveTodoOperationMutationVariables } from "types/schema";
 
 export default function TodoPanel() {
     const [open, setOpen] = useState(false);

@@ -1,4 +1,4 @@
-import * as Types from "./schema.d";
+import * as Types from "../types/schema.d";
 
 import { gql } from "@apollo/client";
 import * as Apollo from "@apollo/client";
